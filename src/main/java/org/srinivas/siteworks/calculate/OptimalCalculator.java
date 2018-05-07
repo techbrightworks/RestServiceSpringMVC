@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.srinivas.siteworks.denomination.Coin;
 
@@ -23,7 +24,9 @@ public class OptimalCalculator implements Calculate {
 	 * @see org.srinivas.siteworks.calculate.Calculate#calculate(java.lang.Integer, java.lang.Integer[])
 	 */
 	@Override
-	public List<Coin> calculate(Integer pence, Integer[] denominations) {
+	@Cacheable(value = "coins", key = "#pence", condition = "#denominations != null")
+	public synchronized List<Coin> calculate(Integer pence, Integer[] denominations) {
+		logIfCalculateUsed();
 		List<Coin> coinsMap = new ArrayList<Coin>();
 		try {
 			AtomicInteger remainingPence = new AtomicInteger(pence);
@@ -33,6 +36,7 @@ public class OptimalCalculator implements Calculate {
 		}
 		return coinsMap;
 	}
+
 
 	/**
 	 * Optimal calculation.
@@ -89,4 +93,6 @@ public class OptimalCalculator implements Calculate {
 		Integer remainingPence = pence % denomination;
 		return remainingPence;
 	}
+	
+	
 }

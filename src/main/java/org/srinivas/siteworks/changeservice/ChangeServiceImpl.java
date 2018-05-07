@@ -5,6 +5,12 @@ import java.util.Collections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.stereotype.Service;
 import org.srinivas.siteworks.calculate.Calculate;
 import org.srinivas.siteworks.data.PropertiesReadWriter;
@@ -26,6 +32,7 @@ public class ChangeServiceImpl implements ChangeService {
 	@Autowired
 	public Calculate optimalCalculator;
 	
+	
 
 	public static final Logger log = LoggerFactory.getLogger(ChangeServiceImpl.class);
 	
@@ -33,8 +40,8 @@ public class ChangeServiceImpl implements ChangeService {
 	 * @see org.srinivas.siteworks.changeservice.ChangeService#getOptimalChangeFor(int)
 	 */
 	@Override
+	@Cacheable(value = "coins", key = "#pence")
 	public Collection<Coin> getOptimalChangeFor(int pence)  {
-		
 		try {
 			return optimalCalculator.calculate(pence,propertiesReadWriter.denominations());
 		} catch (Exception e) {
@@ -55,5 +62,6 @@ public class ChangeServiceImpl implements ChangeService {
 			return Collections.emptyList();
 		}
 	}
+	
 
 }
