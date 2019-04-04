@@ -1,6 +1,6 @@
 RestServiceSpringMVCJson
 -----------------------------
-1.From the command Line move to RestServiceSpringMVCJson directory and build the Project
+1.From the command Line move to RestServiceSpringMVC directory and build the Project
 2.Build Command: mvn clean install -Dwtpversion=2.0
 3.Deploy and Run the application manually by placing the RestServiceSpringMVCJson.war in the
 webapps of Tomcat9(Example:apache-tomcat-9.0.17) and Starting the Server
