@@ -10,22 +10,15 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 
-
-
-
 @Configuration
-@ComponentScan(basePackages = { "org.srinivas.siteworks" }, excludeFilters={@Filter(type=FilterType.ANNOTATION,value=EnableWebMvc.class)})
+@ComponentScan(basePackages = {"org.srinivas.siteworks"}, excludeFilters = {@Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class)})
 public class AppConfig {
 
-	/**
-	 * Place holder configurer.
-	 *
-	 * @return the property sources placeholder configurer
-	 */
-	@Bean
-	public static PropertySourcesPlaceholderConfigurer placeHolderConfigurer() {
-		PropertySourcesPlaceholderConfigurer c = new PropertySourcesPlaceholderConfigurer();
-		c.setIgnoreUnresolvablePlaceholders(true);
-		return c;
-	}
+
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer placeHolderConfigurer() {
+        PropertySourcesPlaceholderConfigurer c = new PropertySourcesPlaceholderConfigurer ();
+        c.setIgnoreUnresolvablePlaceholders ( true );
+        return c;
+    }
 }
