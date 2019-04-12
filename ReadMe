@@ -1,0 +1,12 @@
+RestServiceWithSwagger
+-----------------------------
+1.From the command Line move to RestServiceSpringMVC directory and build the Project
+2.Build Command: mvn clean install -Dwtpversion=2.0
+3.Deploy and Run the application manually by placing the RestServiceWithSwagger.war in the
+webapps of Tomcat9(Example:apache-tomcat-9.0.17) and Starting the Server
+4.Check the REST API with REST Client
+Example1:http://localhost:8080/RestServiceWithSwagger/change/optimal?pence=576
+Example2:http://localhost:8080/RestServiceWithSwagger/change/supply?pence=2000
+Swagger-API-Docs:http://localhost:8080/RestServiceWithSwagger/v2/api-docs
+Swagger-UI-HTML:http://localhost:8080/RestServiceWithSwagger/swagger-ui.html
+5.Source Java12
