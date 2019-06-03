@@ -3,8 +3,8 @@ RestServiceSpringMVCJson
 1.From the command Line move to RestServiceSpringMVC directory and build the Project
 2.Build Command: mvn clean install -Dwtpversion=2.0
 3.Deploy and Run the application manually by placing the RestServiceSpringMVCJson.war in the
-webapps of Tomcat9(Example:apache-tomcat-9.0.17) and Starting the Server
+webapps of Tomcat8.5.39(Example:apache-tomcat-8.5.39) and Starting the Server
 4.Check the REST API with REST Client
 Example1:http://localhost:8080/RestServiceSpringMVCJson/change/optimal?pence=576
 Example2:http://localhost:8080/RestServiceSpringMVCJson/change/supply?pence=2000
-5.Source Java12
+5.Source Java8
