@@ -1,10 +1,23 @@
-RestServiceSpringMVC
+RestServiceSpringMVCJson
 -----------------------------
-1.Unzip the Zip file
-2.From the command Line move to RestServiceSpringMVC directory and build the Project.
-3.Build Command: mvn clean install eclipse:clean eclipse:eclipse -Dwtpversion=2.0
-4.Deploy and Run the application Using tomcat7-maven-plugin with command mvn tomcat7:run-war.
-5.Check the REST API with POSTMAN REST Client 
-Example1:http://localhost:8080/RestServiceSpringMVC/change/optimal?pence=576
-Example2:http://localhost:8080/RestServiceSpringMVC/change/supply?pence=576
-6.Source: Java8
+PreRequisite: Docker Installed, Kubernetes Installed, Minikube Installed and DockerHub Account
+1.From the command Line move to RestServiceSpringMVCJson directory and build the Project
+2.Build Command: mvn clean install -Dwtpversion=2.0
+3.from RestServiceSpringMVCJson Directory run the below commands
+4.Start Minikube Command: minikube start
+5.Commandline Docker login Command : docker login
+Provide Username and Password  as Prompted
+6.Build the image using Dockerfile
+from RestServiceSpringMVCJson Directory run the command below.
+docker build -t restservice .
+7.Using Docker Hub and Public Repository details tag the Image
+docker tag restservice:latest yourdockerhubusername/publicrepositoryname:restservice
+8. Push the  image to DockerHub public repository
+docker push  yourdockerhubusername/publicrepositoryname:restservice
+9.Now apply the deployment : kubectl apply -f deployment.yaml
+10.Now expose and Run the restservice:kubectl apply -f service.yaml
+11.To know the Service Endpoint: minikube service restservice --url
+12.Check the REST API with REST Client
+Example1:http://192.168.99.120:31000/RestServiceSpringMVCJson/change/optimal?pence=576
+Example2:http://192.168.99.120:31000/RestServiceSpringMVCJson/change/supply?pence=2000
+13.Source Java8
